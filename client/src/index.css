@@ -151,9 +151,8 @@ input, textarea, select { font-family: inherit; }
 .sidebar-logo-text {
   font-size: 22px;
   font-weight: 800;
-  color: #fff;
+  color: var(--color-text-primary);
   letter-spacing: -0.5px;
-  text-shadow: 0 0 12px rgba(0,212,255,0.6);
 }
 
 .sidebar-tagline {
@@ -194,7 +193,7 @@ input, textarea, select { font-family: inherit; }
 
 .nav-item:hover {
   background: rgba(0,212,255,0.06);
-  color: #fff;
+  color: var(--color-text-primary);
   border-color: rgba(0,212,255,0.15);
 }
 
@@ -258,7 +257,7 @@ input, textarea, select { font-family: inherit; }
 }
 
 .sidebar-user-info { flex: 1; }
-.sidebar-user-name { font-size: 13px; font-weight: 600; color: #fff; }
+.sidebar-user-name { font-size: 13px; font-weight: 600; color: var(--color-text-primary); }
 .sidebar-user-role { font-size: 11px; color: var(--color-sidebar-text); }
 
 /* ===== TOPBAR ===== */
@@ -288,8 +287,7 @@ input, textarea, select { font-family: inherit; }
 .topbar-title h1 {
   font-size: 20px;
   font-weight: 700;
-  color: #fff;
-  text-shadow: 0 0 8px rgba(0,212,255,0.3);
+  color: var(--color-text-primary);
 }
 
 .topbar-date {
@@ -420,7 +418,7 @@ input, textarea, select { font-family: inherit; }
 }
 
 .stat-label { font-size: 12px; color: var(--color-text-secondary); font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
-.stat-value { font-size: 32px; font-weight: 800; color: #fff; }
+.stat-value { font-size: 32px; font-weight: 800; color: var(--color-text-primary); }
 .stat-value.blue { color: var(--color-neon-blue); text-shadow: 0 0 12px rgba(0,212,255,0.5); }
 .stat-value.purple { color: var(--color-accent-2); text-shadow: 0 0 12px rgba(124,58,237,0.5); }
 .stat-value.green { color: var(--color-neon-green); text-shadow: 0 0 12px rgba(0,255,159,0.5); }
@@ -463,7 +461,7 @@ input, textarea, select { font-family: inherit; }
 .welcome-subtitle { font-size: 12px; color: var(--color-neon-blue); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; font-weight: 600; }
 .welcome-title { font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; }
 .welcome-title span { color: var(--color-neon-blue); text-shadow: 0 0 16px rgba(0,212,255,0.6); }
-.welcome-desc { font-size: 14px; color: var(--color-text-secondary); max-width: 400px; line-height: 1.6; }
+.welcome-desc { font-size: 14px; color: #cdd5e0; max-width: 400px; line-height: 1.6; }
 
 /* ===== PRIORITY BADGES ===== */
 .badge-priority {
@@ -550,7 +548,7 @@ input, textarea, select { font-family: inherit; }
   flex-shrink: 0;
   margin-top: 2px;
   transition: all 0.2s;
-  color: #fff;
+  color: var(--color-text-primary);
   font-size: 12px;
 }
 
@@ -824,7 +822,7 @@ input, textarea, select { font-family: inherit; }
 }
 
 .modal-icon { font-size: 40px; margin-bottom: 16px; }
-.modal-title { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+.modal-title { font-size: 18px; font-weight: 700; color: var(--color-text-primary); margin-bottom: 8px; }
 .modal-desc { font-size: 14px; color: var(--color-text-secondary); margin-bottom: 24px; }
 .modal-actions { display: flex; gap: 12px; justify-content: center; }
 
@@ -905,7 +903,7 @@ input, textarea, select { font-family: inherit; }
 .chart-title {
   font-size: 14px;
   font-weight: 600;
-  color: #fff;
+  color: var(--color-text-primary);
   margin-bottom: 16px;
   display: flex;
   align-items: center;
@@ -965,7 +963,7 @@ input, textarea, select { font-family: inherit; }
 }
 
 .kanban-card:hover { border-color: rgba(0,212,255,0.2); transform: translateY(-1px); }
-.kanban-card-title { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 6px; }
+.kanban-card-title { font-size: 13px; font-weight: 600; color: var(--color-text-primary); margin-bottom: 6px; }
 .kanban-card-desc { font-size: 12px; color: var(--color-text-secondary); margin-bottom: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .kanban-card-footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
 
@@ -977,7 +975,7 @@ input, textarea, select { font-family: inherit; }
   margin-bottom: 20px;
 }
 
-.calendar-title { font-size: 18px; font-weight: 700; color: #fff; }
+.calendar-title { font-size: 18px; font-weight: 700; color: var(--color-text-primary); }
 
 .calendar-nav {
   display: flex;
@@ -1077,7 +1075,7 @@ input, textarea, select { font-family: inherit; }
 .notification-icon.completed { background: rgba(0,255,159,0.12); color: var(--color-neon-green); }
 
 .notification-body { flex: 1; }
-.notification-title { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 4px; }
+.notification-title { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin-bottom: 4px; }
 .notification-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .notification-type { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
 .notification-type.due { color: var(--color-neon-blue); }
@@ -1101,7 +1099,7 @@ input, textarea, select { font-family: inherit; }
 .right-panel-title {
   font-size: 14px;
   font-weight: 700;
-  color: #fff;
+  color: var(--color-text-primary);
   margin-bottom: 12px;
   display: flex;
   align-items: center;
@@ -1118,7 +1116,7 @@ input, textarea, select { font-family: inherit; }
 }
 
 .right-notif-item:hover { border-color: rgba(0,212,255,0.2); }
-.right-notif-task { font-size: 13px; font-weight: 500; color: #fff; margin-bottom: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.right-notif-task { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .right-notif-meta { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 
 /* ===== DOLPHIN MASCOT ===== */
@@ -1215,14 +1213,14 @@ input, textarea, select { font-family: inherit; }
   gap: 12px;
 }
 
-.page-header-title { font-size: 22px; font-weight: 700; color: #fff; }
+.page-header-title { font-size: 22px; font-weight: 700; color: var(--color-text-primary); }
 .page-header-sub { font-size: 13px; color: var(--color-text-secondary); margin-top: 2px; }
 
 /* ===== SECTION TITLE ===== */
 .section-title {
   font-size: 15px;
   font-weight: 700;
-  color: #fff;
+  color: var(--color-text-primary);
   margin-bottom: 16px;
   display: flex;
   align-items: center;
@@ -1250,7 +1248,7 @@ input, textarea, select { font-family: inherit; }
 .text-xs { font-size: 11px; }
 .text-muted { color: var(--color-text-secondary); }
 .font-bold { font-weight: 700; }
-.text-white { color: #fff; }
+.text-white { color: var(--color-text-primary); }
 .text-neon { color: var(--color-neon-blue); }
 
 /* ============================================================
@@ -1329,8 +1327,8 @@ input, textarea, select { font-family: inherit; }
   transition: all 0.15s;
 }
 .sidebar-close-btn:hover {
-  background: rgba(255,255,255,0.08);
-  color: #fff;
+  background: rgba(0,0,0,0.08);
+  color: var(--color-text-primary);
 }
 
 /* ── Topbar hamburger ── */
@@ -1536,7 +1534,7 @@ input, textarea, select { font-family: inherit; }
 .task-modal-title {
   font-size: 16px;
   font-weight: 700;
-  color: #fff;
+  color: var(--color-text-primary);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -1629,4 +1627,9 @@ input, textarea, select { font-family: inherit; }
   border: 1px solid rgba(0,212,255,0.2);
   border-radius: 20px;
   white-space: nowrap;
+}
+
+/* ── Subtask row hover ── */
+.subtask-row:hover {
+  border-color: rgba(0,212,255,0.35) !important;
 }

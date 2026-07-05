@@ -122,7 +122,7 @@ Fin's image is loaded from `/public/fin.png` — replace this file to use your o
 | Setting | What it does |
 |---------|-------------|
 | Display Name & Role | Updates live in the sidebar |
-| Theme (Dark / Darker) | Instantly swaps all background CSS variables |
+| Theme (Dark / Light) | Instantly swaps all colors — backgrounds, text, borders, sidebar |
 | Accent Color | 5 neon swatches — changes highlights, glows, and active states across the entire app instantly |
 | Compact View | Tightens task card padding via a CSS variable, applied immediately |
 | Due Today Alerts | Toggles due-today tasks in the notification panel and badge count |

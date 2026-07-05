@@ -80,32 +80,46 @@ function TaskDetailDrawer({ task, onEdit, onDelete, onToggle, onSubtaskToggle, o
   // Toggle a subtask and persist immediately
   const handleSubtaskToggle = async (idx) => {
     const updated = localSubtasks.map((s, i) =>
-      i === idx ? { ...s, done: !s.done } : s
+      i === idx ? { text: s.text, done: !s.done } : { text: s.text, done: !!s.done }
     )
     setLocalSubtasks(updated)
     setSaving(true)
     try {
+      // Sanitize all fields to plain JSON-safe values only
+      const safeTags = (Array.isArray(task.tags) ? task.tags : [])
+        .filter(t => typeof t === 'string')
+
+      const safeAttachments = (Array.isArray(task.attachments) ? task.attachments : [])
+        .map(a => ({
+          name: String(a.name || ''),
+          type: String(a.type || ''),
+          data: typeof a.data === 'string' ? a.data : '',
+        }))
+
+      const payload = {
+        title:         String(task.title || ''),
+        description:   String(task.description || ''),
+        priority:      String(task.priority || 'medium'),
+        category:      String(task.category || 'Work'),
+        due_date:      task.due_date || null,
+        kanban_column: String(task.kanban_column || ''),
+        tags:          safeTags,
+        subtasks:      updated,
+        attachments:   safeAttachments,
+        time_estimate: Number(task.time_estimate) || 0,
+      }
+
       await fetch(`/api/tasks/${task.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          title:         task.title,
-          description:   task.description,
-          priority:      task.priority,
-          category:      task.category,
-          due_date:      task.due_date,
-          kanban_column: task.kanban_column,
-          tags:          task.tags,
-          subtasks:      updated,
-          attachments:   task.attachments,
-          time_estimate: task.time_estimate,
-        }),
+        body: JSON.stringify(payload),
       })
-      // Notify parent to re-fetch so list view also reflects change
+
       if (onSubtaskToggle) onSubtaskToggle()
-    } catch {
+    } catch (err) {
+      console.error('Subtask save failed:', err.message)
       // Revert on failure
-      setLocalSubtasks(Array.isArray(task.subtasks) ? [...task.subtasks] : [])
+      setLocalSubtasks(Array.isArray(task.subtasks) ? task.subtasks.map(s => ({ text: s.text, done: !!s.done })) : [])
     } finally {
       setSaving(false)
     }
@@ -255,6 +269,7 @@ function TaskDetailDrawer({ task, onEdit, onDelete, onToggle, onSubtaskToggle, o
                   <div
                     key={i}
                     onClick={() => handleSubtaskToggle(i)}
+                    className="subtask-row"
                     style={{
                       display: 'flex', alignItems: 'center', gap: 12,
                       padding: '10px 14px',
@@ -265,8 +280,6 @@ function TaskDetailDrawer({ task, onEdit, onDelete, onToggle, onSubtaskToggle, o
                       transition: 'all 0.15s',
                       userSelect: 'none',
                     }}
-                    onMouseOver={e => e.currentTarget.style.borderColor = 'rgba(0,212,255,0.3)'}
-                    onMouseOut={e => e.currentTarget.style.borderColor = s.done ? 'rgba(0,212,255,0.15)' : 'var(--color-border)'}
                   >
                     {/* Custom checkbox */}
                     <div style={{

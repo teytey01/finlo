@@ -7,7 +7,7 @@ export const defaults = {
   role: 'Task Master',
   email: 'fin@finlo.app',
   accentColor: '#00d4ff',
-  theme: 'dark',          // 'dark' | 'darker'
+  theme: 'dark',          // 'dark' | 'light'
   compactView: false,
   notifDueToday: true,
   notifOverdue: true,
@@ -41,18 +41,24 @@ export function SettingsProvider({ children }) {
     root.style.setProperty('--glow-blue', `0 0 10px ${settings.accentColor}66, 0 0 20px ${settings.accentColor}33`)
 
     // Theme
-    if (settings.theme === 'darker') {
-      root.style.setProperty('--color-bg', '#05080f')
-      root.style.setProperty('--color-sidebar', '#060a12')
-      root.style.setProperty('--color-surface', '#0b1120')
-      root.style.setProperty('--color-surface-2', '#0e1628')
-      root.style.setProperty('--color-border', '#162030')
+    if (settings.theme === 'light') {
+      root.style.setProperty('--color-bg', '#f0f2f5')
+      root.style.setProperty('--color-sidebar', '#ffffff')
+      root.style.setProperty('--color-surface', '#ffffff')
+      root.style.setProperty('--color-surface-2', '#f5f7fa')
+      root.style.setProperty('--color-border', '#e2e8f0')
+      root.style.setProperty('--color-text-primary', '#1a202c')
+      root.style.setProperty('--color-text-secondary', '#64748b')
+      root.style.setProperty('--color-sidebar-text', '#64748b')
     } else {
       root.style.setProperty('--color-bg', '#0a0f1e')
       root.style.setProperty('--color-sidebar', '#0d1117')
       root.style.setProperty('--color-surface', '#111827')
       root.style.setProperty('--color-surface-2', '#1a2235')
       root.style.setProperty('--color-border', '#1e2d45')
+      root.style.setProperty('--color-text-primary', '#e2e8f0')
+      root.style.setProperty('--color-text-secondary', '#8b95a9')
+      root.style.setProperty('--color-sidebar-text', '#8b95a9')
     }
 
     // Compact view — task card padding
