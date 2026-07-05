@@ -12,6 +12,7 @@ import Kanban from './pages/Kanban'
 import Calendar from './pages/Calendar'
 import Notifications from './pages/Notifications'
 import Settings from './pages/Settings'
+import Tags from './pages/Tags'
 import { useTasks } from './hooks/useTasks'
 import { useSettings } from './context/SettingsContext'
 
@@ -45,6 +46,7 @@ function AppInner() {
   const [editTask, setEditTask]     = useState(null)
   const [deleteTarget, setDeleteTarget] = useState(null)
   const [searchQuery, setSearchQuery]   = useState('')
+  const [formDefaultDate, setFormDefaultDate] = useState(null)
 
   // Sidebar state: on mobile starts closed, on desktop starts open
   const [sidebarOpen, setSidebarOpen] = useState(() => window.innerWidth >= 1024)
@@ -73,6 +75,7 @@ function AppInner() {
     '/tasks': 'Tasks',
     '/kanban': 'Kanban Board',
     '/calendar': 'Calendar',
+    '/tags': 'Tags',
     '/notifications': "Fin's Alerts",
     '/settings': 'Settings',
   }
@@ -164,7 +167,11 @@ function AppInner() {
     }
   }
 
-  const openAddForm = () => { setEditTask(null); setFormOpen(true) }
+  const openAddForm = (date) => {
+    setEditTask(null)
+    setFormDefaultDate(date || null)
+    setFormOpen(true)
+  }
 
   const sharedProps = {
     tasks: visibleTasks, loading, error, fetchTasks,
@@ -172,6 +179,7 @@ function AppInner() {
     onDelete: handleDeleteRequest,
     onToggle: handleToggle,
     onAddNew: openAddForm,
+    onRefresh: fetchTasks,
   }
 
   return (
@@ -202,9 +210,10 @@ function AppInner() {
           <Routes>
             <Route path="/" element={<Dashboard {...sharedProps} notifications={notifications} showFinTips={settings.finTips} />} />
             <Route path="/tasks" element={<Tasks {...sharedProps} searchQuery={searchQuery} />} />
-            <Route path="/kanban" element={<Kanban {...sharedProps} />} />
-            <Route path="/calendar" element={<Calendar {...sharedProps} />} />
+            <Route path="/kanban" element={<Kanban {...sharedProps} fetchTasks={fetchTasks} />} />
+            <Route path="/calendar" element={<Calendar {...sharedProps} fetchTasks={fetchTasks} />} />
             <Route path="/notifications" element={<Notifications tasks={visibleTasks} />} />
+            <Route path="/tags" element={<Tags tasks={visibleTasks} onToggle={handleToggle} onEdit={handleEdit} onDelete={handleDeleteRequest} onRefresh={fetchTasks} />} />
             <Route path="/settings" element={<Settings />} />
           </Routes>
         </div>
@@ -219,7 +228,8 @@ function AppInner() {
         <TaskForm
           task={editTask}
           onSave={handleSaveTask}
-          onClose={() => { setFormOpen(false); setEditTask(null) }}
+          onClose={() => { setFormOpen(false); setEditTask(null); setFormDefaultDate(null) }}
+          defaultDate={formDefaultDate}
         />
       )}
 

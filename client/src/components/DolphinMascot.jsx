@@ -1,45 +1,18 @@
 import { useState, useEffect } from 'react'
 import { IconAlertTriangle, IconCheckCircle, IconClock, IconWave } from './Icons'
 
-// ─── Dolphin SVG ─────────────────────────────────────────────────────────────
+// ─── Dolphin image (uses fin.png from /public) ───────────────────────────────
 export function DolphinSVG({ size = 80 }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-      {/* Shadow under dolphin */}
-      <ellipse cx="60" cy="108" rx="28" ry="6" fill="#00d4ff" opacity="0.12"/>
-      {/* Tail flukes */}
-      <path d="M22 72 Q6 58 10 78 Q14 88 26 80 Z" fill="#0099bb"/>
-      <path d="M22 72 Q6 84 14 96 Q22 92 26 80 Z" fill="#00b8d9"/>
-      {/* Main body */}
-      <ellipse cx="62" cy="68" rx="36" ry="22" fill="#00d4ff"/>
-      <ellipse cx="62" cy="66" rx="34" ry="19" fill="#00c8f0"/>
-      {/* Belly highlight */}
-      <ellipse cx="56" cy="74" rx="22" ry="11" fill="#b8f0ff" opacity="0.55"/>
-      {/* Dorsal fin */}
-      <path d="M64 46 Q74 28 82 42 Q76 50 64 50 Z" fill="#00aed6"/>
-      {/* Head / snout */}
-      <ellipse cx="90" cy="66" rx="10" ry="7" fill="#00d4ff"/>
-      {/* Smile */}
-      <path d="M83 71 Q88 76 95 71" stroke="#006688" strokeWidth="1.8" fill="none" strokeLinecap="round"/>
-      {/* Eye */}
-      <circle cx="84" cy="62" r="4.5" fill="#0a1628"/>
-      <circle cx="85.5" cy="60.5" r="1.6" fill="white"/>
-      {/* Shine on body */}
-      <ellipse cx="70" cy="56" rx="8" ry="3.5" fill="white" opacity="0.15" transform="rotate(-20 70 56)"/>
-      {/* Pectoral fin */}
-      <path d="M68 76 Q58 88 52 84 Q56 76 68 76Z" fill="#00b0d0" opacity="0.8"/>
-      {/* Glow */}
-      <ellipse cx="62" cy="68" rx="36" ry="22" fill="url(#dGlow)" opacity="0.18"/>
-      <defs>
-        <radialGradient id="dGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#00d4ff" stopOpacity="1"/>
-          <stop offset="100%" stopColor="#00d4ff" stopOpacity="0"/>
-        </radialGradient>
-      </defs>
-    </svg>
+    <img
+      src="/fin.png"
+      alt="Fin the dolphin"
+      width={size}
+      height={size}
+      style={{ objectFit: 'contain', display: 'block' }}
+    />
   )
 }
-
 // ─── Status icon helper ───────────────────────────────────────────────────────
 function StatusIcon({ type, accent }) {
   const props = { size: 16, color: accent }

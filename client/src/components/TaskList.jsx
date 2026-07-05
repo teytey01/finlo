@@ -2,7 +2,7 @@ import TaskCard from './TaskCard'
 import { IconWave } from './Icons'
 import { DolphinSVG } from './DolphinMascot'
 
-export default function TaskList({ tasks, loading, error, onToggle, onEdit, onDelete, emptyMessage, emptyIcon }) {
+export default function TaskList({ tasks, loading, error, onToggle, onEdit, onDelete, onRefresh, emptyMessage, emptyIcon }) {
   if (loading) {
     return (
       <div className="loading-wrapper">
@@ -43,6 +43,7 @@ export default function TaskList({ tasks, loading, error, onToggle, onEdit, onDe
           onToggle={onToggle}
           onEdit={onEdit}
           onDelete={onDelete}
+          onRefresh={onRefresh}
         />
       ))}
     </div>
